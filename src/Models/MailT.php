@@ -11,7 +11,15 @@ class MailT extends Model {
     public $attach = "";
     private $subject = "";
     private $body = "";
-    
+
+    /**
+     * MailT constructor.
+     *
+     * @param string $slug
+     * @param array $params
+     *
+     * @return void
+     */
     public function __construct($slug, $params)
     {
         if ($slug && $params) {
@@ -39,6 +47,11 @@ class MailT extends Model {
 
     }
 
+    /**
+     * send mail
+     *
+     * @return bool
+     */
     public function send()
     {
         if ($this->to && $this->body && $this->subject) {
@@ -85,6 +98,11 @@ class MailT extends Model {
         }
     }
 
+    /**
+     * add in log mail table
+     *
+     * @return void
+     */
     private function doAddMailer()
     {
         Mailer::create(

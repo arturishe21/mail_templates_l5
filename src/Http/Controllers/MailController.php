@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\View;
 
 class MailController extends Controller
 {
-    /*
+    /**
      * list templates mails return
+     *
+     * @return Illuminate\Support\Facades\View
      */
     public function fetchIndex()
     {
@@ -26,13 +28,23 @@ class MailController extends Controller
         return View::make('mail-templates::' . $view)
             ->with('title', Config::get('mail-templates.config.title_page'))
             ->with("data", $allpage);
-    }//end fetchIndex
+    }
 
+    /**
+     * get popup create mail template
+     *
+     * @return Illuminate\Support\Facades\View
+     */
     public function fetchCreate()
     {
         return View::make('mail-templates::part.form_emails');
     }
 
+    /**
+     * get popup edit mail tempalte
+     *
+     * @return mixed
+     */
     public function fetchEdit()
     {
         $id = Input::get("id");
@@ -43,6 +55,11 @@ class MailController extends Controller
         }
     }
 
+    /**
+     * do save mail template
+     *
+     * @return false|json
+     */
     public function doSave()
     {
         parse_str(Input::get('data'), $data);
@@ -55,6 +72,11 @@ class MailController extends Controller
         return EmailsTemplate::doSave($data);
     }
 
+    /**
+     * delete mail template
+     *
+     * @return mixed
+     */
     public function doDelete()
     {
         $id_page = Input::get("id");

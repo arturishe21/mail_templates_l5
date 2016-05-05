@@ -21,8 +21,7 @@ class MailTemplatesServiceProvider extends ServiceProvider
         $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'mail-templates');
 
         $this->publishes([
-            __DIR__
-            . '/published' => public_path('packages/vis/mail-templates'),
+            __DIR__ . '/published' => public_path('packages/vis/mail-templates'),
             __DIR__ . '/config' => config_path('mail-templates/')
         ], 'mail-templates');
 

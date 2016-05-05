@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Response;
 
 class EmailsTemplate extends Model
 {
-
     protected $table = 'emails_template';
 
-    //rules validation
+    /**
+     * rules validation
+     */
     public static $rules  = array(
         'title' => 'required',
         'slug' => 'required|max:256|unique:emails_template,slug,',
@@ -21,8 +22,13 @@ class EmailsTemplate extends Model
 
     public $timestamps = false;
 
-    /*
+    /**
      * validation data
+     *
+     * @param array $data
+     * @integer $id
+     *
+     * @return false|json
      */
     public static function isValid($data, $id)
     {
@@ -39,10 +45,14 @@ class EmailsTemplate extends Model
         } else {
             return false;
         }
-    }//end isValid
+    }
 
-    /*
-     * update and create record
+    /**
+     * update or create record
+     *
+     * @param array $data
+     *
+     * @return json Response
      */
     public static function doSave($data)
     {
