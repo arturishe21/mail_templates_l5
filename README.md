@@ -1,7 +1,7 @@
 
 В composer.json добавляем в блок require
 ```json
- "vis/mail-templates_l5": "1.0.*"
+ "vis/mail_templates_l5": "1.*"
 ```
 
 Выполняем
@@ -9,14 +9,14 @@
 composer update
 ```
 
-Добавляем в app.php
+Добавляем в app.php в массив providers
 ```php
-  'Vis\MailTemplates\MailTemplatesServiceProvider',
+  Vis\MailTemplates\MailTemplatesServiceProvider::class
 ```
 
 Выполняем миграцию таблиц
 ```json
-   php artisan migrate --path=vendor/vis/mail-templates_l5/src/Migrations
+   php artisan migrate --path=vendor/vis/mail_templates_l5/src/Migrations
 ```
 
 Публикуем js и конфиги файлы
