@@ -32,7 +32,7 @@ class MailT extends Model {
             $search[] = "{domen}";
             $replace[] = $_SERVER['HTTP_HOST'];
 
-            if ($result->id) {
+            if (isset($result->id)) {
                 $this->subject = $result->subject;
                 $this->body = $result->body;
 
@@ -42,6 +42,8 @@ class MailT extends Model {
                 );
                 $this->body = str_replace($search, $replace, $this->body);
                 $this->subject = str_replace($search, $replace, $this->subject);
+            } else {
+                throw new \RuntimeException("Ошибка. Не в базе не найден шаблон письма " . $slug);
             }
         }
 
