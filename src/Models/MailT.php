@@ -8,6 +8,7 @@ class MailT extends Model {
 
     public $to = "";
     public $name = "";
+    public $no_write_bd = false;
     public $attach = "";
     private $subject = "";
     private $body = "";
@@ -60,8 +61,10 @@ class MailT extends Model {
             $data = array("body" => $this->body);
 
             //save in logs
-            $this->doAddMailer();
-
+            if ($this->no_write_bd == false) {
+                $this->doAddMailer();
+            }
+            
             Mail::send('mail-templates::email_body', $data, function($message)
             {
                 if (strpos($this->to, ",")) {
