@@ -1,5 +1,3 @@
-
-
 <!-- Modal -->
 <div class="modal fade" id="modal_form" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" >
   <div class="modal-dialog" style="width: 900px">
@@ -10,4 +8,3 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->

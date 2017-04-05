@@ -65,5 +65,5 @@ class EmailsTemplate extends Model
             )
         );
     }
-
 }
+

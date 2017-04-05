@@ -25,28 +25,4 @@
             {{{$mail->body}}}
         </div>
     </section>
-   {{-- <p><a class="">Ответить</a></p>
-    <div class="answer">
-      <table>
-        <tr>
-            <td style="width: 100px"><strong>От:</strong></td>
-            <td>
-               <input id="title" class="dblclick-edit-input form-control input-sm unselectable" type="text" name="title" value='"{{Config::get("mail.from.name")}}" <{{Config::get("mail.from.address")}}>'>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 100px"><strong>Кому:</strong></td>
-            <td>
-               <input id="title" class="dblclick-edit-input form-control input-sm unselectable" type="text" name="title" value='"{{Config::get("mail.from.name")}}" <{{Config::get("mail.from.address")}}>'>
-            </td>
-        </tr>
-
-      </table>
-
-       <section>
-           <p>
-               <strong>{{__cms('Тема письма')}}</strong>: RE: {{$mail->subject}}
-           </p>
-       </section>
-    </div>--}}
 </div>

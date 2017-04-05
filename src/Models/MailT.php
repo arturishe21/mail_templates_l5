@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Config;
 
 class MailT extends Model {
 
@@ -61,10 +60,10 @@ class MailT extends Model {
             $data = array("body" => $this->body);
 
             //save in logs
-            if ($this->no_write_bd == false) {
+            if ($this->no_write_bd === false) {
                 $this->doAddMailer();
             }
-            
+
             Mail::send('mail-templates::email_body', $data, function($message)
             {
                 if (strpos($this->to, ",")) {
@@ -118,5 +117,4 @@ class MailT extends Model {
             )
         );
     }
-
 }
