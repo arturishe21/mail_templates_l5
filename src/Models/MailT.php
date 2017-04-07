@@ -22,6 +22,8 @@ class MailT extends Model {
      */
     public function __construct($slug, $params)
     {
+        $domain = $this->getDomain();
+
         if ($slug && $params) {
             $result = EmailsTemplate::where("slug", $slug)->first();
 
@@ -30,14 +32,14 @@ class MailT extends Model {
                 $replace[] = $el;
             }
             $search[] = "{domen}";
-            $replace[] = $_SERVER['HTTP_HOST'];
+            $replace[] = $domain;
 
             if (isset($result->id)) {
                 $this->subject = $result->subject;
                 $this->body = $result->body;
 
                 $this->body = str_replace(
-                    '/images/', 'http://' . $_SERVER['HTTP_HOST'] . "/images/",
+                    '/images/', 'http://' . $domain . "/images/",
                     $this->body
                 );
                 $this->body = str_replace($search, $replace, $this->body);
@@ -46,7 +48,17 @@ class MailT extends Model {
                 throw new \RuntimeException("Ошибка. Не в базе не найден шаблон письма " . $slug);
             }
         }
+    }
 
+    private function getDomain()
+    {
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $domain = $_SERVER['HTTP_HOST'];
+        } else {
+            $domain = config('app.url');
+        }
+
+        return $domain;
     }
 
     /**
